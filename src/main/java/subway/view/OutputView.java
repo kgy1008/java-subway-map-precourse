@@ -1,31 +1,16 @@
 package subway.view;
 
+import static subway.view.Menu.LINE_MENU;
+import static subway.view.Menu.MAIN_MENU;
+import static subway.view.Menu.SECTION_MENU;
+import static subway.view.Menu.STATION_MENU;
+
 import subway.dto.LineResponse;
 import subway.dto.StationResponse;
 import subway.dto.SubwayResponse;
 
 public class OutputView {
     private static final String NEW_LINE = System.lineSeparator();
-    private static final String MAIN_MENU = "## 메인 화면" + NEW_LINE
-            + "1. 역 관리" + NEW_LINE
-            + "2. 노선 관리" + NEW_LINE
-            + "3. 구간 관리" + NEW_LINE
-            + "4. 지하철 노선도 출력" + NEW_LINE
-            + "Q. 종료";
-    private static final String STATION_MENU = "## 역 관리 화면" + NEW_LINE
-            + "1. 역 등록" + NEW_LINE
-            + "2. 역 삭제" + NEW_LINE
-            + "3. 역 조회" + NEW_LINE
-            + "B. 돌아가기";
-    private static final String LINE_MENU = "## 노선 관리 화면" + NEW_LINE
-            + "1. 노선 등록" + NEW_LINE
-            + "2. 노선 삭제" + NEW_LINE
-            + "3. 노선 조회" + NEW_LINE
-            + "B. 돌아가기" + NEW_LINE;
-    private static final String SECTION_MENU = "## 구간 관리 화면" + NEW_LINE
-            + "1. 구간 등록" + NEW_LINE
-            + "2. 구간 삭제" + NEW_LINE
-            + "B. 돌아가기" + NEW_LINE;
     private static final String STATION_MESSAGE = "## 역 목록";
     private static final String LINE_MESSAGE = "## 노선 목록";
     private static final String SUBWAY_MESSAGE = "## 지하철 노선도";
