@@ -56,4 +56,8 @@ public class OutputView {
         subwayResponse.stations().forEach(station -> System.out.println(INFO + station));
         System.out.print(NEW_LINE);
     }
+
+    public void printErrorMessage(final String message) {
+        System.out.println(message);
+    }
 }

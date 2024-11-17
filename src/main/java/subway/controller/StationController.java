@@ -6,6 +6,7 @@ import static subway.domain.user.ManagementResponse.ONE;
 import static subway.domain.user.ManagementResponse.THREE;
 import static subway.domain.user.ManagementResponse.TWO;
 
+import subway.controller.util.RetryTemplate;
 import subway.domain.user.ManagementResponse;
 import subway.service.StationService;
 import subway.view.InputView;
@@ -16,6 +17,7 @@ public class StationController implements Controller {
     private final StationService stationService;
     private final InputView inputView;
     private final OutputView outputView;
+    private final RetryTemplate retryTemplate = new RetryTemplate();
 
     public StationController(final InputView inputView,
                              final OutputView outputView) {
@@ -26,7 +28,7 @@ public class StationController implements Controller {
 
     public void run() {
         outputView.printStationMenu();
-        ManagementResponse managementResponse = inputView.inputManagement();
+        ManagementResponse managementResponse = retryTemplate.retryTemplate(inputView::inputManagement);
         if (managementResponse == ONE) {
             executeEnroll();
         }
@@ -39,15 +41,19 @@ public class StationController implements Controller {
     }
 
     private void executeEnroll() {
-        String name = inputView.inputNewStationName();
-        stationService.addStation(name);
-        outputView.printInfoMessage(REGISTER_STATION.getMessage());
+        retryTemplate.retryTemplate(() -> {
+            String name = inputView.inputNewStationName();
+            stationService.addStation(name);
+            outputView.printInfoMessage(REGISTER_STATION.getMessage());
+        });
     }
 
     private void executeDelete() {
-        String name = inputView.inputDeletedStationName();
-        stationService.deleteStation(name);
-        outputView.printInfoMessage(DELETE_STATION.getMessage());
+        retryTemplate.retryTemplate(() -> {
+            String name = inputView.inputDeletedStationName();
+            stationService.deleteStation(name);
+            outputView.printInfoMessage(DELETE_STATION.getMessage());
+        });
     }
 
     private void executeDisplay() {

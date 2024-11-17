@@ -6,6 +6,7 @@ import static subway.domain.user.ManagementResponse.ONE;
 import static subway.domain.user.ManagementResponse.THREE;
 import static subway.domain.user.ManagementResponse.TWO;
 
+import subway.controller.util.RetryTemplate;
 import subway.domain.user.ManagementResponse;
 import subway.service.LineService;
 import subway.view.InputView;
@@ -16,6 +17,7 @@ public class LineController implements Controller {
     private final LineService lineService;
     private final InputView inputView;
     private final OutputView outputView;
+    private final RetryTemplate retryTemplate = new RetryTemplate();
 
     public LineController(final InputView inputView, final OutputView outputView) {
         this.lineService = new LineService();
@@ -25,7 +27,7 @@ public class LineController implements Controller {
 
     public void run() {
         outputView.printLineMenu();
-        ManagementResponse managementResponse = inputView.inputManagement();
+        ManagementResponse managementResponse = retryTemplate.retryTemplate(inputView::inputManagement);
         if (managementResponse == ONE) {
             executeEnroll();
         }
@@ -38,17 +40,21 @@ public class LineController implements Controller {
     }
 
     private void executeEnroll() {
-        String name = inputView.inputNewLineName();
-        String startStationName = inputView.inputStartStationName();
-        String endStationName = inputView.inputEndStationName();
-        lineService.addLine(name, startStationName, endStationName);
-        outputView.printInfoMessage(REGISTER_LINE.getMessage());
+        retryTemplate.retryTemplate(() -> {
+            String name = inputView.inputNewLineName();
+            String startStationName = inputView.inputStartStationName();
+            String endStationName = inputView.inputEndStationName();
+            lineService.addLine(name, startStationName, endStationName);
+            outputView.printInfoMessage(REGISTER_LINE.getMessage());
+        });
     }
 
     private void executeDelete() {
-        String name = inputView.inputDeletedLINEName();
-        lineService.deleteLine(name);
-        outputView.printInfoMessage(DELETE_LINE.getMessage());
+        retryTemplate.retryTemplate(() -> {
+            String name = inputView.inputDeletedLINEName();
+            lineService.deleteLine(name);
+            outputView.printInfoMessage(DELETE_LINE.getMessage());
+        });
     }
 
     private void executeDisplay() {

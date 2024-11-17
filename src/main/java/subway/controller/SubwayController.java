@@ -1,6 +1,7 @@
 package subway.controller;
 
 import java.util.List;
+import subway.controller.util.RetryTemplate;
 import subway.domain.Line;
 import subway.domain.Stations;
 import subway.domain.user.MainMenuResponse;
@@ -14,6 +15,7 @@ public class SubwayController {
     private final InputView inputView;
     private final OutputView outputView;
     private Controller controller;
+    private final RetryTemplate retryTemplate = new RetryTemplate();
 
     public SubwayController(final InputView inputView, final OutputView outputView) {
         this.inputView = inputView;
@@ -23,7 +25,7 @@ public class SubwayController {
     public void run() {
         while (true) {
             outputView.printMainMenu();
-            MainMenuResponse mainMenuResponse = inputView.inputFeature();
+            MainMenuResponse mainMenuResponse = retryTemplate.retryTemplate(inputView::inputFeature);
             if (mainMenuResponse == MainMenuResponse.ONE) {
                 Controller stationController = new StationController(inputView, outputView);
                 stationController.run();
