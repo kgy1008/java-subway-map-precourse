@@ -1,6 +1,6 @@
 package subway.service;
 
-import static subway.common.ErrorMessage.CAN_NOT_DELETE;
+import static subway.common.ErrorMessage.CAN_NOT_DELETE_STATION;
 
 import java.util.List;
 import subway.domain.Station;
@@ -29,7 +29,7 @@ public class StationService {
     private void checkDeleteStation(final String name) {
         Station station = StationRepository.findStationByName(name);
         if (station.isExistInLine()) {
-            throw new IllegalArgumentException(CAN_NOT_DELETE.getMessage());
+            throw new IllegalArgumentException(CAN_NOT_DELETE_STATION.getMessage());
         }
     }
 }
