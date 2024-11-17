@@ -1,4 +1,4 @@
-package subway.domain;
+package subway.domain.user;
 
 import static subway.common.ErrorMessage.INVALID_INPUT;
 
