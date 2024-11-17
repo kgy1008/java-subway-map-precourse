@@ -18,6 +18,10 @@ public class Line {
         this.stations = new Stations();
     }
 
+    public boolean hasStations() {
+        return stations.getSize() != 0;
+    }
+
     public String getName() {
         return name;
     }

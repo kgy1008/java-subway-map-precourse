@@ -1,5 +1,7 @@
 package subway.repository;
 
+import static subway.common.ErrorMessage.NOT_LINE_FOUND;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -29,4 +31,10 @@ public class LineRepository {
         return lines.stream().anyMatch(line -> Objects.equals(line.getName(), name));
     }
 
+    public static Line findLineByName(final String name) {
+        return lines.stream()
+                .filter(line -> Objects.equals(line.getName(), name))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(NOT_LINE_FOUND.getMessage()));
+    }
 }

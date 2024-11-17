@@ -4,10 +4,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Stations {
-    private static final Set<Line> NO_STATION = new HashSet<>();
+    private static final Set<Station> NO_STATION = new HashSet<>();
     private final Set<Station> stations;
 
     public Stations() {
-        stations = new HashSet<>();
+        stations = NO_STATION;
+    }
+
+    int getSize() {
+        return stations.size();
     }
 }
