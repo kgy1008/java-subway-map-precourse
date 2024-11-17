@@ -26,35 +26,35 @@ public class LineController implements Controller {
     }
 
     public void run() {
-        outputView.printLineMenu();
-        ManagementResponse managementResponse = retryTemplate.retryTemplate(inputView::inputManagement);
-        if (managementResponse == ONE) {
-            executeEnroll();
-        }
-        if (managementResponse == TWO) {
-            executeDelete();
-        }
-        if (managementResponse == THREE) {
-            executeDisplay();
-        }
+        retryTemplate.retryTemplate(() -> {
+            outputView.printLineMenu();
+            ManagementResponse managementResponse = inputView.inputManagement();
+            if (managementResponse == ONE) {
+                executeEnroll();
+            }
+            if (managementResponse == TWO) {
+                executeDelete();
+            }
+            if (managementResponse == THREE) {
+                executeDisplay();
+            }
+        });
     }
 
     private void executeEnroll() {
-        retryTemplate.retryTemplate(() -> {
-            String name = inputView.inputNewLineName();
-            String startStationName = inputView.inputStartStationName();
-            String endStationName = inputView.inputEndStationName();
-            lineService.addLine(name, startStationName, endStationName);
-            outputView.printInfoMessage(REGISTER_LINE.getMessage());
-        });
+        String name = inputView.inputNewLineName();
+        String startStationName = inputView.inputStartStationName();
+        String endStationName = inputView.inputEndStationName();
+        lineService.addLine(name, startStationName, endStationName);
+        outputView.printInfoMessage(REGISTER_LINE.getMessage());
+
     }
 
     private void executeDelete() {
-        retryTemplate.retryTemplate(() -> {
-            String name = inputView.inputDeletedLINEName();
-            lineService.deleteLine(name);
-            outputView.printInfoMessage(DELETE_LINE.getMessage());
-        });
+        String name = inputView.inputDeletedLINEName();
+        lineService.deleteLine(name);
+        outputView.printInfoMessage(DELETE_LINE.getMessage());
+
     }
 
     private void executeDisplay() {

@@ -27,33 +27,31 @@ public class StationController implements Controller {
     }
 
     public void run() {
-        outputView.printStationMenu();
-        ManagementResponse managementResponse = retryTemplate.retryTemplate(inputView::inputManagement);
-        if (managementResponse == ONE) {
-            executeEnroll();
-        }
-        if (managementResponse == TWO) {
-            executeDelete();
-        }
-        if (managementResponse == THREE) {
-            executeDisplay();
-        }
+        retryTemplate.retryTemplate(() -> {
+            outputView.printStationMenu();
+            ManagementResponse managementResponse = inputView.inputManagement();
+            if (managementResponse == ONE) {
+                executeEnroll();
+            }
+            if (managementResponse == TWO) {
+                executeDelete();
+            }
+            if (managementResponse == THREE) {
+                executeDisplay();
+            }
+        });
     }
 
     private void executeEnroll() {
-        retryTemplate.retryTemplate(() -> {
-            String name = inputView.inputNewStationName();
-            stationService.addStation(name);
-            outputView.printInfoMessage(REGISTER_STATION.getMessage());
-        });
+        String name = inputView.inputNewStationName();
+        stationService.addStation(name);
+        outputView.printInfoMessage(REGISTER_STATION.getMessage());
     }
 
     private void executeDelete() {
-        retryTemplate.retryTemplate(() -> {
-            String name = inputView.inputDeletedStationName();
-            stationService.deleteStation(name);
-            outputView.printInfoMessage(DELETE_STATION.getMessage());
-        });
+        String name = inputView.inputDeletedStationName();
+        stationService.deleteStation(name);
+        outputView.printInfoMessage(DELETE_STATION.getMessage());
     }
 
     private void executeDisplay() {

@@ -25,33 +25,31 @@ public class SectionController implements Controller {
     }
 
     public void run() {
-        outputView.printSectionMenu();
-        ManagementResponse managementResponse = retryTemplate.retryTemplate(inputView::inputManagement);
+        retryTemplate.retryTemplate(() -> {
+            outputView.printSectionMenu();
+            ManagementResponse managementResponse = inputView.inputManagement();
 
-        if (managementResponse == ONE) {
-            executeEnroll();
-        }
-        if (managementResponse == TWO) {
-            executeDelete();
-        }
+            if (managementResponse == ONE) {
+                executeEnroll();
+            }
+            if (managementResponse == TWO) {
+                executeDelete();
+            }
+        });
     }
 
     private void executeEnroll() {
-        retryTemplate.retryTemplate(() -> {
-            String lineName = inputView.inputNewSectionLine();
-            String stationName = inputView.inputNewSectionStation();
-            int sequence = inputView.inputSequence();
-            sectionService.enrollSection(lineName, stationName, sequence);
-            outputView.printInfoMessage(REGISTER_SECTION.getMessage());
-        });
+        String lineName = inputView.inputNewSectionLine();
+        String stationName = inputView.inputNewSectionStation();
+        int sequence = inputView.inputSequence();
+        sectionService.enrollSection(lineName, stationName, sequence);
+        outputView.printInfoMessage(REGISTER_SECTION.getMessage());
     }
 
     private void executeDelete() {
-        retryTemplate.retryTemplate(() -> {
-            String lineName = inputView.inputDeletedSectionLine();
-            String stationName = inputView.inputDeletedSectionStation();
-            sectionService.deleteSection(lineName, stationName);
-            outputView.printInfoMessage(DELETE_SECTION.getMessage());
-        });
+        String lineName = inputView.inputDeletedSectionLine();
+        String stationName = inputView.inputDeletedSectionStation();
+        sectionService.deleteSection(lineName, stationName);
+        outputView.printInfoMessage(DELETE_SECTION.getMessage());
     }
 }
