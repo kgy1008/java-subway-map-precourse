@@ -2,7 +2,7 @@ package subway.domain;
 
 import static subway.common.ErrorMessage.CONFLICT_LINE;
 import static subway.common.ErrorMessage.INVALID_FORMAT;
-import static subway.common.ErrorMessage.INVALID_LENGTH;
+import static subway.common.ErrorMessage.INVALID_LINE_NAME_LENGTH;
 
 import subway.repository.LineRepository;
 
@@ -28,7 +28,7 @@ public class Line {
 
     private void validateName(final String name) {
         if (name.length() < MIN_LENGTH) {
-            throw new IllegalArgumentException(INVALID_LENGTH.getMessage());
+            throw new IllegalArgumentException(INVALID_LINE_NAME_LENGTH.getMessage());
         }
     }
 
