@@ -8,20 +8,20 @@ import subway.repository.StationRepository;
 
 public class Station {
     private static final int MIN_LENGTH = 2;
+    private static final int NO_LINE = 0;
     private static final String ESSENTIAL_SUFFIX = "역";
-    private static final String NO_LINE = "";
 
     private final String name;
-    private final Line line;
+    private final Lines lines;
 
     public Station(final String name) {
         validate(name);
         this.name = name;
-        this.line = new Line(NO_LINE);
+        this.lines = new Lines();
     }
 
     public boolean isExistInLine() {
-        return !line.getName().equals(NO_LINE);
+        return lines.getSize() != NO_LINE;
     }
 
     public String getName() {
