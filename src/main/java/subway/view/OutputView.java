@@ -2,6 +2,7 @@ package subway.view;
 
 import subway.dto.LineResponse;
 import subway.dto.StationResponse;
+import subway.dto.SubwayResponse;
 
 public class OutputView {
     private static final String NEW_LINE = System.lineSeparator();
@@ -18,6 +19,8 @@ public class OutputView {
             + "B. 돌아가기";
     private static final String STATION_MESSAGE = "## 역 목록";
     private static final String LINE_MESSAGE = "## 노선 목록";
+    private static final String SUBWAY_MESSAGE = "## 지하철 노선도";
+    private static final String DELIMITER = "---";
     private static final String INFO = "[INFO] ";
 
     public void printMainMenu() {
@@ -41,6 +44,14 @@ public class OutputView {
     public void printLines(final LineResponse lineResponse) {
         System.out.println(LINE_MESSAGE);
         lineResponse.lines().forEach(line -> System.out.println(INFO + line));
+        System.out.print(NEW_LINE);
+    }
+
+    public void printSubway(final SubwayResponse subwayResponse) {
+        System.out.println(SUBWAY_MESSAGE);
+        System.out.println(INFO + subwayResponse.line());
+        System.out.println(INFO + DELIMITER);
+        subwayResponse.stations().forEach(station -> System.out.println(INFO + station));
         System.out.print(NEW_LINE);
     }
 }

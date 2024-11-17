@@ -3,6 +3,7 @@ package subway.domain;
 import static subway.common.ErrorMessage.CONFLICT_ERROR;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import subway.repository.StationRepository;
 
@@ -16,6 +17,10 @@ public class Stations {
 
     int getSize() {
         return stations.size();
+    }
+
+    public List<Station> getStations() {
+        return Collections.unmodifiableList(stations);
     }
 
     boolean hasStation(final Station station) {

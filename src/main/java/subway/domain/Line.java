@@ -47,6 +47,10 @@ public class Line {
         return name;
     }
 
+    public Stations getStations() {
+        return stations;
+    }
+
     private void validate(final String name) {
         validateName(name);
         validateDuplicated(name);
