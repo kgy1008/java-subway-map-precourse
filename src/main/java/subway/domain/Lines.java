@@ -14,4 +14,8 @@ public class Lines {
     int getSize() {
         return lines.size();
     }
+
+    void add(final Line line) {
+        lines.add(line);
+    }
 }

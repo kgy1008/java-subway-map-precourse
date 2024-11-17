@@ -18,12 +18,20 @@ public class Line {
         this.stations = new Stations();
     }
 
-    public boolean hasStations() {
+    public boolean isExistStations() {
         return stations.getSize() != 0;
+    }
+
+    public boolean hasStation(final Station station) {
+        return stations.hasStation(station);
     }
 
     public void registerLine(final String startStation, final String endStation) {
         stations.registerStations(startStation, endStation);
+    }
+
+    public void addStation(final Station station, final int sequence) {
+        stations.add(station, sequence);
     }
 
     public String getName() {

@@ -24,6 +24,10 @@ public class Station {
         return lines.getSize() != NO_LINE;
     }
 
+    public void addLine(final Line line) {
+        lines.add(line);
+    }
+
     public String getName() {
         return name;
     }

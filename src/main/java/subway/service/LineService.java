@@ -30,7 +30,7 @@ public class LineService {
 
     private void checkDeleteLine(final String name) {
         Line line = LineRepository.findLineByName(name);
-        if (line.hasStations()) {
+        if (line.isExistStations()) {
             throw new IllegalArgumentException(CAN_NOT_DELETE_LINE.getMessage());
         }
     }

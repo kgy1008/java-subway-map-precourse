@@ -18,6 +18,10 @@ public class Stations {
         return stations.size();
     }
 
+    boolean hasStation(final Station station) {
+        return stations.contains(station);
+    }
+
     void registerStations(final String startStationName, final String endStationName) {
         Station startStation = findStation(startStationName);
         Station endStation = findStation(endStationName);
@@ -26,6 +30,9 @@ public class Stations {
         stations.addLast(endStation);
     }
 
+    void add(final Station station, final int sequence) {
+        stations.add(sequence - 1, station);
+    }
 
     private Station findStation(final String stationName) {
         return StationRepository.findStationByName(stationName);
