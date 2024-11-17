@@ -14,8 +14,10 @@ public class SubwayController {
     }
 
     public void run() {
-
+        displayMainMenu();
     }
 
-
+    private void displayMainMenu() {
+        outputView.printMainMenu();
+    }
 }
