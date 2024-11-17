@@ -7,7 +7,8 @@ import static subway.common.ErrorMessage.INVALID_LINE_NAME_LENGTH;
 import subway.repository.LineRepository;
 
 public class Line {
-    private static final int MIN_LENGTH = 2;
+    private static final int MIN_NAME_LENGTH = 2;
+    private static final int MIN_STATION_COUNT = 2;
     private static final String ESSENTIAL_SUFFIX = "호선";
     private final String name;
     private final Stations stations;
@@ -34,6 +35,14 @@ public class Line {
         stations.add(station, sequence);
     }
 
+    public boolean hasLessThanTwoStation() {
+        return stations.getSize() <= MIN_STATION_COUNT;
+    }
+
+    public void removeStation(final Station station) {
+        stations.remove(station);
+    }
+
     public String getName() {
         return name;
     }
@@ -45,7 +54,7 @@ public class Line {
     }
 
     private void validateName(final String name) {
-        if (name.length() < MIN_LENGTH) {
+        if (name.length() < MIN_NAME_LENGTH) {
             throw new IllegalArgumentException(INVALID_LINE_NAME_LENGTH.getMessage());
         }
     }

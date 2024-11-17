@@ -28,6 +28,10 @@ public class Station {
         lines.add(line);
     }
 
+    public void removeLine(final Line line) {
+        lines.remove(line);
+    }
+
     public String getName() {
         return name;
     }

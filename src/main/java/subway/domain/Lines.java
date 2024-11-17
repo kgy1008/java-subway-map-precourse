@@ -18,4 +18,8 @@ public class Lines {
     void add(final Line line) {
         lines.add(line);
     }
+
+    void remove(final Line line) {
+        lines.remove(line);
+    }
 }

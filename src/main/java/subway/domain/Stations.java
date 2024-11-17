@@ -34,6 +34,10 @@ public class Stations {
         stations.add(sequence - 1, station);
     }
 
+    void remove(final Station station) {
+        stations.remove(station);
+    }
+
     private Station findStation(final String stationName) {
         return StationRepository.findStationByName(stationName);
     }
