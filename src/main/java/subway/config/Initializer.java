@@ -56,21 +56,21 @@ public class Initializer {
     private void initSectionOfLine() {
         for (Line line : INITIAL_LINES) {
             if (line.getName().equals("2호선")) {
-                line.addStation(findStationByName("교대역"), 0);
-                line.addStation(findStationByName("강남역"), 1);
-                line.addStation(findStationByName("역삼역"), 2);
+                line.addStation(findStationByName("교대역"), 1);
+                line.addStation(findStationByName("강남역"), 2);
+                line.addStation(findStationByName("역삼역"), 3);
                 continue;
             }
             if (line.getName().equals("3호선")) {
-                line.addStation(findStationByName("교대역"), 0);
-                line.addStation(findStationByName("남부터미널역"), 1);
-                line.addStation(findStationByName("양재역"), 2);
-                line.addStation(findStationByName("매봉역"), 3);
+                line.addStation(findStationByName("교대역"), 1);
+                line.addStation(findStationByName("남부터미널역"), 2);
+                line.addStation(findStationByName("양재역"), 3);
+                line.addStation(findStationByName("매봉역"), 4);
                 continue;
             }
-            line.addStation(findStationByName("강남역"), 0);
-            line.addStation(findStationByName("양재역"), 1);
-            line.addStation(findStationByName("양재시민의숲역"), 2);
+            line.addStation(findStationByName("강남역"), 1);
+            line.addStation(findStationByName("양재역"), 2);
+            line.addStation(findStationByName("양재시민의숲역"), 3);
         }
     }
 
