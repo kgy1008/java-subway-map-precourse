@@ -9,7 +9,7 @@ import subway.repository.LineRepository;
 public class Line {
     private static final int MIN_NAME_LENGTH = 2;
     private static final int MIN_STATION_COUNT = 2;
-    private static final String ESSENTIAL_SUFFIX = "호선";
+    private static final String ESSENTIAL_SUFFIX = "선";
     private final String name;
     private final Stations stations;
 
