@@ -17,6 +17,15 @@ public class OutputView {
             + "2. 역 삭제" + NEW_LINE
             + "3. 역 조회" + NEW_LINE
             + "B. 돌아가기";
+    private static final String LINE_MENU = "## 노선 관리 화면" + NEW_LINE
+            + "1. 노선 등록" + NEW_LINE
+            + "2. 노선 삭제" + NEW_LINE
+            + "3. 노선 조회" + NEW_LINE
+            + "B. 돌아가기" + NEW_LINE;
+    private static final String SECTION_MENU = "## 구간 관리 화면" + NEW_LINE
+            + "1. 구간 등록" + NEW_LINE
+            + "2. 구간 삭제" + NEW_LINE
+            + "B. 돌아가기" + NEW_LINE;
     private static final String STATION_MESSAGE = "## 역 목록";
     private static final String LINE_MESSAGE = "## 노선 목록";
     private static final String SUBWAY_MESSAGE = "## 지하철 노선도";
@@ -29,6 +38,14 @@ public class OutputView {
 
     public void printStationMenu() {
         System.out.println(STATION_MENU);
+    }
+
+    public void printLineMenu() {
+        System.out.println(LINE_MENU);
+    }
+
+    public void printSectionMenu() {
+        System.out.println(SECTION_MENU);
     }
 
     public void printStations(final StationResponse stationResponse) {

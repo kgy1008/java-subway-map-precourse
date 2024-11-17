@@ -23,6 +23,7 @@ public class SectionController implements Controller {
     }
 
     public void run() {
+        outputView.printSectionMenu();
         ManagementResponse managementResponse = inputView.inputManagement();
         if (managementResponse == ONE) {
             executeEnroll();

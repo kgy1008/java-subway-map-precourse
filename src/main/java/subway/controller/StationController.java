@@ -25,6 +25,7 @@ public class StationController implements Controller {
     }
 
     public void run() {
+        outputView.printStationMenu();
         ManagementResponse managementResponse = inputView.inputManagement();
         if (managementResponse == ONE) {
             executeEnroll();

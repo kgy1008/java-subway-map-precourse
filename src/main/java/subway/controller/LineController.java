@@ -24,6 +24,7 @@ public class LineController implements Controller {
     }
 
     public void run() {
+        outputView.printLineMenu();
         ManagementResponse managementResponse = inputView.inputManagement();
         if (managementResponse == ONE) {
             executeEnroll();
