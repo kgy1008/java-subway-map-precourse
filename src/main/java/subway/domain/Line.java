@@ -39,7 +39,7 @@ public class Line {
     }
 
     private void validateFormat(final String name) {
-        if (!name.contains("ESSENTIAL_SUFFIX")) {
+        if (!name.contains(ESSENTIAL_SUFFIX)) {
             throw new IllegalArgumentException(INVALID_FORMAT.getMessage());
         }
     }
