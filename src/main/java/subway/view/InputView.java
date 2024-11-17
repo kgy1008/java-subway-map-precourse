@@ -16,6 +16,10 @@ public class InputView {
     private static final String START_STATION_MESSAGE = "## 등록할 노선의 상행 종점역 이름을 입력하세요.";
     private static final String END_STATION_MESSAGE = "## 등록할 노선의 하행 종점역 이름을 입력하세요.";
     private static final String SEQUENCE_INPUT_MESSAGE = "## 순서를 입력하세요.";
+    private static final String DELETE_SECTION_LINE_MESSAGE = "## 삭제할 구간의 노선을 입력하세요.";
+    private static final String DELETE_SECTION_STATION_MESSAGE = "## 삭제할 구간의 역을 입력하세요.";
+    private static final String ENROLL_SECTION_LINE_MESSAGE = "## 노선을 입력하세요.";
+    private static final String ENROLL_SECTION_STATION_MESSAGE = "## 역이름을 입력하세요.";
     private static final int MIN_VALUE = 1;
 
     private final Scanner scanner = new Scanner(System.in);
@@ -59,6 +63,26 @@ public class InputView {
 
     public String inputEndStationName() {
         System.out.println(END_STATION_MESSAGE);
+        return scanner.nextLine();
+    }
+
+    public String inputNewSectionLine() {
+        System.out.println(ENROLL_SECTION_LINE_MESSAGE);
+        return scanner.nextLine();
+    }
+
+    public String inputNewSectionStation() {
+        System.out.println(ENROLL_SECTION_STATION_MESSAGE);
+        return scanner.nextLine();
+    }
+
+    public String inputDeletedSectionLine() {
+        System.out.println(DELETE_SECTION_LINE_MESSAGE);
+        return scanner.nextLine();
+    }
+
+    public String inputDeletedSectionStation() {
+        System.out.println(DELETE_SECTION_STATION_MESSAGE);
         return scanner.nextLine();
     }
 
