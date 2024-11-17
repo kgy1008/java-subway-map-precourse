@@ -35,4 +35,23 @@ public class Initializer {
     private void initLine() {
         LineRepository.addLines(INITIAL_LINES);
     }
+
+    private void initSection() {
+        for (Station station : INITIAL_STATIONS) {
+            if (station.getName().equals("교대역") || station.getName().equals("강남역") || station.getName().equals("역삼역")) {
+                station.addLine(findByName("2호선"));
+                continue;
+            }
+            if (station.getName().equals("강남역") || station.getName().equals("양재역") || station.getName()
+                    .equals("양재시민의숲역")) {
+                station.addLine(findByName("신분당선"));
+                continue;
+            }
+            station.addLine(findByName("3호선"));
+        }
+    }
+
+    private Line findByName(final String name) {
+        return LineRepository.findLineByName(name);
+    }
 }
