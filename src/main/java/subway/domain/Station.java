@@ -4,7 +4,6 @@ import static subway.common.ErrorMessage.CONFLICT_STATION;
 import static subway.common.ErrorMessage.INVALID_FORMAT;
 import static subway.common.ErrorMessage.INVALID_STATION_NAME_LENGTH;
 
-import java.util.Objects;
 import subway.repository.StationRepository;
 
 public class Station {
@@ -51,22 +50,5 @@ public class Station {
         if (!name.contains(ESSENTIAL_SUFFIX)) {
             throw new IllegalArgumentException(INVALID_FORMAT.getMessage());
         }
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Station station = (Station) o;
-        return Objects.equals(name, station.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(name);
     }
 }
