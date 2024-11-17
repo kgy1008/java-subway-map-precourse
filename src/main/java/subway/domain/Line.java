@@ -22,6 +22,10 @@ public class Line {
         return stations.getSize() != 0;
     }
 
+    public void registerLine(final String startStation, final String endStation) {
+        stations.registerStations(startStation, endStation);
+    }
+
     public String getName() {
         return name;
     }

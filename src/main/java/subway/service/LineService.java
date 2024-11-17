@@ -17,6 +17,12 @@ public class LineService {
         return new LineResponse(lines);
     }
 
+    public void addLine(final String name, final String startStation, final String endStation) {
+        Line line = new Line(name);
+        line.registerLine(startStation, endStation);
+        LineRepository.addLine(line);
+    }
+
     public void deleteLine(final String name) {
         checkDeleteLine(name);
         LineRepository.deleteLineByName(name);
