@@ -17,13 +17,18 @@ public class SubwayService {
         initializer.init();
     }
 
-    public void deleteStation(final String stationName) {
-        checkDeleteStation(stationName);
-        StationRepository.deleteStation(stationName);
+    public void addStation(final String name) {
+        Station station = new Station(name);
+        StationRepository.addStation(station);
     }
 
-    private void checkDeleteStation(final String stationName) {
-        Station station = StationRepository.findStationByName(stationName);
+    public void deleteStation(final String name) {
+        checkDeleteStation(name);
+        StationRepository.deleteStation(name);
+    }
+
+    private void checkDeleteStation(final String name) {
+        Station station = StationRepository.findStationByName(name);
         if (station.isExistInLine()) {
             throw new IllegalArgumentException(CAN_NOT_DELETE.getMessage());
         }
