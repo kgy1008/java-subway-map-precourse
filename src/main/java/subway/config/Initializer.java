@@ -20,8 +20,7 @@ public class Initializer {
             new Station("남부터미널역"),
             new Station("양재역"),
             new Station("양재시민의숲역"),
-            new Station("매봉역"),
-            new Station("잠실역")
+            new Station("매봉역")
     );
 
     public void init() {
