@@ -11,15 +11,15 @@ import subway.service.StationService;
 import subway.view.InputView;
 import subway.view.OutputView;
 
-public class StationController {
+public class StationController implements Controller {
 
     private final StationService stationService;
     private final InputView inputView;
     private final OutputView outputView;
 
-    public StationController(final StationService stationService, final InputView inputView,
+    public StationController(final InputView inputView,
                              final OutputView outputView) {
-        this.stationService = stationService;
+        this.stationService = new StationService();
         this.inputView = inputView;
         this.outputView = outputView;
     }
@@ -38,14 +38,14 @@ public class StationController {
     }
 
     private void executeEnroll() {
-        String stationName = inputView.inputNewStationName();
-        stationService.addStation(stationName);
+        String name = inputView.inputNewStationName();
+        stationService.addStation(name);
         outputView.printInfoMessage(REGISTER_STATION.getMessage());
     }
 
     private void executeDelete() {
-        String stationName = inputView.inputDeletedStationName();
-        stationService.deleteStation(stationName);
+        String name = inputView.inputDeletedStationName();
+        stationService.deleteStation(name);
         outputView.printInfoMessage(DELETE_STATION.getMessage());
     }
 
