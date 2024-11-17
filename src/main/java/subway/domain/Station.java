@@ -9,11 +9,19 @@ import subway.repository.StationRepository;
 public class Station {
     private static final int MIN_LENGTH = 2;
     private static final String ESSENTIAL_SUFFIX = "역";
+    private static final String NO_LINE = "";
+
     private final String name;
+    private final Line line;
 
     public Station(final String name) {
         validate(name);
         this.name = name;
+        this.line = new Line(NO_LINE);
+    }
+
+    public boolean isExistInLine() {
+        return !line.getName().equals(NO_LINE);
     }
 
     public String getName() {

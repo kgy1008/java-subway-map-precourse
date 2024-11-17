@@ -1,5 +1,7 @@
 package subway.repository;
 
+import static subway.common.ErrorMessage.NOT_STATION_FOUND;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -26,6 +28,13 @@ public class StationRepository {
     }
 
     public static boolean isExistStationByName(final String name) {
-        return stations().stream().anyMatch(line -> Objects.equals(line.getName(), name));
+        return stations().stream().anyMatch(station -> Objects.equals(station.getName(), name));
+    }
+
+    public static Station findStationByName(final String name) {
+        return stations().stream()
+                .filter(station -> Objects.equals(station.getName(), name))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(NOT_STATION_FOUND.getMessage()));
     }
 }
