@@ -10,10 +10,12 @@ public class Line {
     private static final int MIN_LENGTH = 2;
     private static final String ESSENTIAL_SUFFIX = "호선";
     private final String name;
+    private final Stations stations;
 
     public Line(final String name) {
         validate(name);
         this.name = name;
+        this.stations = new Stations();
     }
 
     public String getName() {
