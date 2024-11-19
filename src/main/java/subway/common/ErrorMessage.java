@@ -16,9 +16,15 @@ public enum ErrorMessage {
     NOT_FOUND_LINE("존재하지 않는 노선입니다."),
     UNAUTHORIZED_DELETE_LINE("역이 등록된 노선은 삭제할 수 없습니다."),
 
+    // section error
+    NOT_FOUND_SECTION("구간에 등록되지 않은 노선입니다."),
+    CONFLICT_SECTION("해당 노선에 이미 존재하는 역입니다."),
+
     // input error
     INVALID_INPUT("잘못된 입력값입니다. 메뉴 목록에 있는 값을 입력해주세요."),
-    ;
+    INVALID_FORMAT("숫자로 변환할 수 없는 값입니다."),
+    INVALID_RANGE("1 이상의 숫자를 입력해주세요."),
+    OUT_OF_RANGE("리스트의 사이즈를 벗어나는 순서 값입니다.");
 
 
     private static final String HEADER = "[ERROR] ";

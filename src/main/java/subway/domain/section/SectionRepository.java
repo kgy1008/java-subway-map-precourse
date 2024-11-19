@@ -3,6 +3,7 @@ package subway.domain.section;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import subway.common.ErrorMessage;
 import subway.domain.line.Line;
 import subway.domain.station.Station;
 
@@ -29,5 +30,12 @@ public class SectionRepository {
     public static boolean isExistByLine(final Line line) {
         return sections().stream()
                 .anyMatch(section -> section.isEqualLine(line));
+    }
+
+    public static Section findByLine(final Line line) {
+        return sections().stream()
+                .filter(section -> section.isEqualLine(line))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.NOT_FOUND_SECTION.getMessage()));
     }
 }

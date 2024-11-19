@@ -1,6 +1,7 @@
 package subway.view;
 
 import java.util.Scanner;
+import subway.common.ErrorMessage;
 import subway.domain.response.ManageResponse;
 import subway.domain.response.MenuResponse;
 
@@ -14,6 +15,10 @@ public class InputView {
     private static final String LINE_NAME_INPUT_MESSAGE = "## 등록할 노선 이름을 입력하세요.";
     private static final String START_STATION_NAME_INPUT_MESSAGE = "## 등록할 노선의 상행 종점역 이름을 입력하세요.";
     private static final String END_STATION_NAME_INPUT_MESSAGE = "## 등록할 노선의 하행 종점역 이름을 입력하세요.";
+    private static final String SECTION_LINE_NAME_INPUT_MESSAGE = "## 노선을 입력하세요.";
+    private static final String SECTION_STATION_NAME_INPUT_MESSAGE = "## 역이름을 입력하세요.";
+    private static final String SECTION_SEQUENCE_INPUT_MESSAGE = "## 순서를 입력하세요.";
+    private static final int MIN_SEQUENCE = 1;
 
     public MenuResponse inputMainMenuFeature() {
         System.out.println(MENU_INPUT_MESSAGE);
@@ -55,5 +60,37 @@ public class InputView {
     public String inputEndStationName() {
         System.out.println(NEW_LINE + END_STATION_NAME_INPUT_MESSAGE);
         return scanner.nextLine();
+    }
+
+    public String inputSectionLine() {
+        System.out.println(NEW_LINE + SECTION_LINE_NAME_INPUT_MESSAGE);
+        return scanner.nextLine();
+    }
+
+    public String inputSectionStation() {
+        System.out.println(NEW_LINE + SECTION_STATION_NAME_INPUT_MESSAGE);
+        return scanner.nextLine();
+    }
+
+    public int inputSectionSequence() {
+        System.out.println(NEW_LINE + SECTION_SEQUENCE_INPUT_MESSAGE);
+        String inputSequence = scanner.nextLine();
+        int sequence = convertToInt(inputSequence);
+        validateRange(sequence);
+        return sequence;
+    }
+
+    private int convertToInt(final String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_FORMAT.getMessage());
+        }
+    }
+
+    private void validateRange(final int sequence) {
+        if (sequence < MIN_SEQUENCE) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_RANGE.getMessage());
+        }
     }
 }
