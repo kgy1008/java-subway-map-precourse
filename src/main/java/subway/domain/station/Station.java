@@ -44,7 +44,7 @@ public class Station {
     }
 
     private void validateDuplicate(final String name) {
-        if (StationRepository.existsByname(name)) {
+        if (StationRepository.existsByName(name)) {
             throw new IllegalArgumentException(ErrorMessage.CONFLICT_STATION.getMessage());
         }
     }

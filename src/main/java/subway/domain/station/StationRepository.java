@@ -20,7 +20,7 @@ public class StationRepository {
         return stations.removeIf(station -> Objects.equals(station.getName(), name));
     }
 
-    public static boolean existsByname(final String name) {
+    public static boolean existsByName(final String name) {
         return stations.stream().anyMatch(station -> station.getName().equals(name));
     }
 }
