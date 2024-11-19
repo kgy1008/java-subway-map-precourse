@@ -17,7 +17,7 @@ public class InputView {
         return MenuResponse.of(input);
     }
 
-    public ManageResponse inputStationManageFeature() {
+    public ManageResponse inputManageFeature() {
         System.out.println(MENU_INPUT_MESSAGE);
         String input = scanner.nextLine();
         return ManageResponse.of(input);
