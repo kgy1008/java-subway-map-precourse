@@ -9,6 +9,7 @@ import subway.view.InputView;
 import subway.view.OutputView;
 
 public class StationController {
+
     private final OutputView outputView;
     private final InputView inputView;
     private final StationService stationService;
