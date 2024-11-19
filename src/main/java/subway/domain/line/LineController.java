@@ -49,8 +49,10 @@ public class LineController {
     }
 
     private void enrollLine() {
-        String name = inputView.inputStationName();
-        lineService.add(name);
+        String name = inputView.inputLineName();
+        String startStationName = inputView.inputStartStationName();
+        String endStationName = inputView.inputEndStationName();
+        lineService.add(name, startStationName, endStationName);
         outputView.printMessage(InfoMessage.CREATE_LINE.getMessage());
     }
 
