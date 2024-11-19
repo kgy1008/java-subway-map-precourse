@@ -2,6 +2,7 @@ package subway.view;
 
 import static subway.view.MenuTemplate.LINE_MENU;
 import static subway.view.MenuTemplate.MAIN_MENU;
+import static subway.view.MenuTemplate.SECTION_MENU;
 import static subway.view.MenuTemplate.STATION_MENU;
 
 import subway.dto.LineInfo;
@@ -24,6 +25,10 @@ public class OutputView {
 
     public void printLineMenu() {
         System.out.println(LINE_MENU);
+    }
+
+    public void printSectionMenu() {
+        System.out.println(SECTION_MENU);
     }
 
     public void printMessage(final String message) {

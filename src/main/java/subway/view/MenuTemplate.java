@@ -21,4 +21,9 @@ public class MenuTemplate {
             + "2. 노선 삭제" + NEW_LINE
             + "3. 노선 조회" + NEW_LINE
             + "B. 돌아가기" + NEW_LINE;
+
+    static final String SECTION_MENU = "## 구간 관리 화면" + NEW_LINE
+            + "1. 구간 등록" + NEW_LINE
+            + "2. 구간 삭제" + NEW_LINE
+            + "B. 돌아가기" + NEW_LINE;
 }
