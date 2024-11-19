@@ -1,5 +1,6 @@
 package subway.domain.station;
 
+import java.util.Objects;
 import subway.common.ErrorMessage;
 
 public class Station {
@@ -47,5 +48,22 @@ public class Station {
         if (StationRepository.existsByName(name)) {
             throw new IllegalArgumentException(ErrorMessage.CONFLICT_STATION.getMessage());
         }
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Station station = (Station) o;
+        return Objects.equals(name, station.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(name);
     }
 }
