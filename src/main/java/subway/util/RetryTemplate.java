@@ -1,15 +1,18 @@
 package subway.util;
 
 import java.util.function.Supplier;
+import subway.view.OutputView;
 
 public class RetryTemplate {
+
+    private static final OutputView outputView = new OutputView();
 
     public static <T> T retryTemplate(final Supplier<T> action) {
         while (true) {
             try {
                 return action.get();
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                outputView.printMessage(e.getMessage());
             }
         }
     }
@@ -20,7 +23,7 @@ public class RetryTemplate {
                 action.run();
                 break;
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                outputView.printMessage(e.getMessage());
             }
         }
     }
