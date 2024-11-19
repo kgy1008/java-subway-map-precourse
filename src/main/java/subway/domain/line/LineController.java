@@ -1,10 +1,7 @@
 package subway.domain.line;
 
-import java.util.List;
 import subway.common.InfoMessage;
 import subway.domain.response.ManageResponse;
-import subway.domain.station.Station;
-import subway.dto.StationInfo;
 import subway.util.RetryTemplate;
 import subway.view.InputView;
 import subway.view.OutputView;
@@ -45,24 +42,24 @@ public class LineController {
             deleteLine();
         }
         if (response == ManageResponse.THREE) {
-            displayLines();
+            //displayLines();
         }
     }
 
     private void enrollLine() {
         String name = inputView.inputStationName();
         lineService.add(name);
-        outputView.printMessage(InfoMessage.CREATE_STATION.getMessage());
+        outputView.printMessage(InfoMessage.CREATE_LINE.getMessage());
     }
 
     private void deleteLine() {
-        String name = inputView.inputDeletedStationName();
+        String name = inputView.inputDeletedLineName();
         lineService.delete(name);
-        outputView.printMessage(InfoMessage.DELETE_STATION.getMessage());
+        outputView.printMessage(InfoMessage.DELETE_LINE.getMessage());
     }
 
     private void displayLines() {
-        List<Station> stations = lineService.findAll();
-        outputView.printStations(StationInfo.of(stations));
+        //List<Station> stations = lineService.findAll();
+        //outputView.printStations(StationInfo.of(stations));
     }
 }

@@ -17,4 +17,8 @@ public class Section {
     boolean isContainStation(final Station station) {
         return stations.isContain(station);
     }
+
+    boolean isContainLine(final Line line) {
+        return this.line.equals(line);
+    }
 }

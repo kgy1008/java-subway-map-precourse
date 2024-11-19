@@ -3,7 +3,7 @@ package subway.domain.line;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
+import subway.common.ErrorMessage;
 
 public class LineRepository {
     private static final List<Line> lines = new ArrayList<>();
@@ -20,11 +20,19 @@ public class LineRepository {
         lines.addAll(inputLines);
     }
 
-    public static boolean deleteLineByName(final String name) {
-        return lines.removeIf(line -> Objects.equals(line.getName(), name));
+    public static void deleteLine(final Line line) {
+        lines.remove(line);
     }
 
     public static boolean existsByName(final String name) {
-        return lines.stream().anyMatch(line -> line.getName().equals(name));
+        return lines.stream()
+                .anyMatch(line -> line.getName().equals(name));
+    }
+
+    public static Line findByName(final String name) {
+        return lines.stream()
+                .filter(line -> line.getName().equals(name))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.NOT_FOUND_LINE.getMessage()));
     }
 }
