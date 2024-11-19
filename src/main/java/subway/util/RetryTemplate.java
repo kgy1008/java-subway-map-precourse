@@ -1,10 +1,10 @@
-package subway.controller.util;
+package subway.util;
 
 import java.util.function.Supplier;
 
 public class RetryTemplate {
 
-    public <T> T retryTemplate(final Supplier<T> action) {
+    public static <T> T retryTemplate(final Supplier<T> action) {
         while (true) {
             try {
                 return action.get();
@@ -14,7 +14,7 @@ public class RetryTemplate {
         }
     }
 
-    public void retryTemplate(final Runnable action) {
+    public static void retryTemplate(final Runnable action) {
         while (true) {
             try {
                 action.run();
