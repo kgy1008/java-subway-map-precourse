@@ -25,12 +25,14 @@ public class StationRepository {
     }
 
     public static boolean existsByName(final String name) {
-        return stations.stream().anyMatch(station -> station.getName().equals(name));
+        return stations.stream()
+                .anyMatch(station -> station.getName().equals(name));
     }
 
     public static Station findByName(final String name) {
         return stations.stream()
-                .filter(station -> station.getName().equals(name)).findFirst()
+                .filter(station -> station.getName().equals(name))
+                .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.NOT_FOUND_STATION.getMessage()));
     }
 }
