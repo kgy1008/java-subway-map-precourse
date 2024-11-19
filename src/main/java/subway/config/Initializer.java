@@ -27,7 +27,7 @@ public class Initializer {
             new Line("3호선"),
             new Line("신분당선")
     );
-    
+
     private static final Set<Section> INITIAL_SECTION = Set.of(
             new Section(new Line("2호선"),
                     new ArrayList<>(List.of(new Station("교대역"), new Station("강남역"), new Station("역삼역")))),
@@ -38,21 +38,21 @@ public class Initializer {
                     new ArrayList<>(List.of(new Station("강남역"), new Station("양재역"), new Station("양재시민의숲역"))))
     );
 
-    public static void init() {
+    public void init() {
         initStation();
         initLine();
         initSection();
     }
 
-    private static void initStation() {
+    private void initStation() {
         StationRepository.addStations(INITIAL_STATION);
     }
 
-    private static void initLine() {
+    private void initLine() {
         LineRepository.addLines(INITIAL_LINE);
     }
 
-    private static void initSection() {
+    private void initSection() {
         SectionRepository.addSections(INITIAL_SECTION);
     }
 }

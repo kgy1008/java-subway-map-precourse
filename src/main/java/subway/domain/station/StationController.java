@@ -2,25 +2,20 @@ package subway.domain.station;
 
 import java.util.List;
 import subway.common.InfoMessage;
+import subway.controller.SubwayController;
 import subway.domain.response.ManageResponse;
 import subway.dto.StationInfo;
 import subway.util.RetryTemplate;
-import subway.view.InputView;
-import subway.view.OutputView;
 
-public class StationController {
+public class StationController extends SubwayController {
 
-    private final OutputView outputView;
-    private final InputView inputView;
     private final StationService stationService;
 
-    public StationController(final OutputView outputView, final InputView inputView,
-                             final StationService stationService) {
-        this.outputView = outputView;
-        this.inputView = inputView;
+    public StationController(final StationService stationService) {
         this.stationService = stationService;
     }
 
+    @Override
     public void run() {
         RetryTemplate.retryTemplate(() -> {
             displayMenu();

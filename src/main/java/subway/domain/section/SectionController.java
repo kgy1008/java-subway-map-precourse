@@ -2,24 +2,19 @@ package subway.domain.section;
 
 import subway.common.ErrorMessage;
 import subway.common.InfoMessage;
+import subway.controller.SubwayController;
 import subway.domain.response.ManageResponse;
 import subway.util.RetryTemplate;
-import subway.view.InputView;
-import subway.view.OutputView;
 
-public class SectionController {
+public class SectionController extends SubwayController {
 
-    private final OutputView outputView;
-    private final InputView inputView;
     private final SectionService sectionService;
 
-    public SectionController(final OutputView outputView, final InputView inputView,
-                             final SectionService sectionService) {
-        this.outputView = outputView;
-        this.inputView = inputView;
+    public SectionController(final SectionService sectionService) {
         this.sectionService = sectionService;
     }
 
+    @Override
     public void run() {
         RetryTemplate.retryTemplate(() -> {
             displayMenu();
