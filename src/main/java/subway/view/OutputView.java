@@ -7,12 +7,16 @@ import static subway.view.MenuTemplate.STATION_MENU;
 
 import subway.dto.LineInfo;
 import subway.dto.StationInfo;
+import subway.dto.SubwayInfo;
+import subway.dto.SubwayRoute;
 
 public class OutputView {
     private static final String NEW_LINE = System.lineSeparator();
     private static final String STATION_DISPLAY_MESSAGE = "## 역 목록";
     private static final String LINE_DISPLAY_MESSAGE = "## 노선 목록";
+    private static final String SUBWAY_MAP_DISPLAY_MESSAGE = "## 지하철 노선도";
     private static final String INFO_HEADER = "[INFO] ";
+    private static final String DELIMITER = "---";
 
     public void printMainMenu() {
         System.out.println(MAIN_MENU);
@@ -46,5 +50,15 @@ public class OutputView {
         System.out.println(NEW_LINE + STATION_DISPLAY_MESSAGE);
         lineInfo.lineNames().forEach(line -> System.out.println(INFO_HEADER + line));
         System.out.print(NEW_LINE);
+    }
+
+    public void printSubway(final SubwayRoute subwayRoute) {
+        System.out.println(NEW_LINE + SUBWAY_MAP_DISPLAY_MESSAGE);
+        for (SubwayInfo subwayInfo : subwayRoute.subwayInfos()) {
+            System.out.println(INFO_HEADER + subwayInfo.lines());
+            System.out.println(INFO_HEADER + DELIMITER);
+            subwayInfo.stationNames().forEach(station -> System.out.println(INFO_HEADER + station));
+            System.out.print(NEW_LINE);
+        }
     }
 }

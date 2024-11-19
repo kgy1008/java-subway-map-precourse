@@ -1,5 +1,6 @@
 package subway.domain.section;
 
+import java.util.Collections;
 import java.util.List;
 import subway.common.ErrorMessage;
 import subway.domain.station.Station;
@@ -28,6 +29,10 @@ public class Stations {
 
     void delete(final Station station) {
         stations.remove(station);
+    }
+
+    List<Station> getStations() {
+        return Collections.unmodifiableList(stations);
     }
 
     private void validateIndex(int index) {

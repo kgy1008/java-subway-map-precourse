@@ -15,6 +15,12 @@ public class Section {
         this.stations = new Stations(stations);
     }
 
+    public List<String> getStationInfo() {
+        return stations.getStations().stream()
+                .map(Station::getName)
+                .toList();
+    }
+
     boolean isContainStation(final Station station) {
         return stations.isContain(station);
     }
