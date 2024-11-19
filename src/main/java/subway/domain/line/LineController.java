@@ -1,7 +1,9 @@
 package subway.domain.line;
 
+import java.util.List;
 import subway.common.InfoMessage;
 import subway.domain.response.ManageResponse;
+import subway.dto.LineInfo;
 import subway.util.RetryTemplate;
 import subway.view.InputView;
 import subway.view.OutputView;
@@ -42,7 +44,7 @@ public class LineController {
             deleteLine();
         }
         if (response == ManageResponse.THREE) {
-            //displayLines();
+            displayLines();
         }
     }
 
@@ -59,7 +61,7 @@ public class LineController {
     }
 
     private void displayLines() {
-        //List<Station> stations = lineService.findAll();
-        //outputView.printStations(StationInfo.of(stations));
+        List<Line> lines = lineService.findAll();
+        outputView.printLines(LineInfo.of(lines));
     }
 }

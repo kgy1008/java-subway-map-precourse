@@ -1,5 +1,6 @@
 package subway.domain.line;
 
+import java.util.List;
 import subway.common.ErrorMessage;
 import subway.domain.section.SectionRepository;
 
@@ -20,5 +21,9 @@ public class LineService {
         if (SectionRepository.isExistLine(line)) {
             throw new IllegalArgumentException(ErrorMessage.UNAUTHORIZED_DELETE_LINE.getMessage());
         }
+    }
+
+    List<Line> findAll() {
+        return LineRepository.lines();
     }
 }

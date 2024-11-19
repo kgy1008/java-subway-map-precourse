@@ -4,11 +4,13 @@ import static subway.view.MenuTemplate.LINE_MENU;
 import static subway.view.MenuTemplate.MAIN_MENU;
 import static subway.view.MenuTemplate.STATION_MENU;
 
+import subway.dto.LineInfo;
 import subway.dto.StationInfo;
 
 public class OutputView {
     private static final String NEW_LINE = System.lineSeparator();
     private static final String STATION_DISPLAY_MESSAGE = "## 역 목록";
+    private static final String LINE_DISPLAY_MESSAGE = "## 노선 목록";
     private static final String INFO_HEADER = "[INFO] ";
 
     public void printMainMenu() {
@@ -30,8 +32,14 @@ public class OutputView {
     }
 
     public void printStations(final StationInfo stationInfo) {
-        System.out.println(NEW_LINE + STATION_DISPLAY_MESSAGE);
+        System.out.println(NEW_LINE + LINE_DISPLAY_MESSAGE);
         stationInfo.stationNames().forEach(station -> System.out.println(INFO_HEADER + station));
+        System.out.print(NEW_LINE);
+    }
+
+    public void printLines(final LineInfo lineInfo) {
+        System.out.println(NEW_LINE + STATION_DISPLAY_MESSAGE);
+        lineInfo.lineNames().forEach(line -> System.out.println(INFO_HEADER + line));
         System.out.print(NEW_LINE);
     }
 }
