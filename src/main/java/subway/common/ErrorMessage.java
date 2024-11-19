@@ -19,6 +19,7 @@ public enum ErrorMessage {
     // section error
     NOT_FOUND_SECTION("구간에 등록되지 않은 노선입니다."),
     CONFLICT_SECTION("해당 노선에 이미 존재하는 역입니다."),
+    NOT_FOUND_STATION_IN_SECTION("해당 구간에 등록되지 않은 역입니다."),
 
     // input error
     INVALID_INPUT("잘못된 입력값입니다. 메뉴 목록에 있는 값을 입력해주세요."),

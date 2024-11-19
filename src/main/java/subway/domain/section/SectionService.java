@@ -13,4 +13,11 @@ public class SectionService {
         Section section = SectionRepository.findByLine(line);
         section.addStation(station, sequence);
     }
+
+    void delete(final String lineName, final String stationName) {
+        Line line = LineRepository.findByName(lineName);
+        Station station = StationRepository.findByName(stationName);
+        Section section = SectionRepository.findByLine(line);
+        section.deleteStation(station);
+    }
 }

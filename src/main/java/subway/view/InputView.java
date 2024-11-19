@@ -18,6 +18,8 @@ public class InputView {
     private static final String SECTION_LINE_NAME_INPUT_MESSAGE = "## 노선을 입력하세요.";
     private static final String SECTION_STATION_NAME_INPUT_MESSAGE = "## 역이름을 입력하세요.";
     private static final String SECTION_SEQUENCE_INPUT_MESSAGE = "## 순서를 입력하세요.";
+    private static final String SECTION_DELETED_LINE_NAME_INPUT_MESSAGE = "## 삭제할 구간의 노선을 입력하세요.";
+    private static final String SECTION_DELETED_STATION_NAME_INPUT_MESSAGE = "## 삭제할 구간의 역을 입력하세요.";
     private static final int MIN_SEQUENCE = 1;
 
     public MenuResponse inputMainMenuFeature() {
@@ -78,6 +80,16 @@ public class InputView {
         int sequence = convertToInt(inputSequence);
         validateRange(sequence);
         return sequence;
+    }
+
+    public String inputDeletedSectionLineName() {
+        System.out.println(NEW_LINE + SECTION_DELETED_LINE_NAME_INPUT_MESSAGE);
+        return scanner.nextLine();
+    }
+
+    public String inputDeletedSectionStationName() {
+        System.out.println(NEW_LINE + SECTION_DELETED_STATION_NAME_INPUT_MESSAGE);
+        return scanner.nextLine();
     }
 
     private int convertToInt(final String input) {

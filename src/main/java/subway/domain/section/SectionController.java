@@ -42,7 +42,7 @@ public class SectionController {
             return;
         }
         if (response == ManageResponse.TWO) {
-            // deleteSection();
+            deleteSection();
             return;
         }
         if (response == ManageResponse.BACK) {
@@ -59,11 +59,10 @@ public class SectionController {
         outputView.printMessage(InfoMessage.CREATE_SECTION.getMessage());
     }
 
-/*    private void deleteSection() {
-        String name = inputView.inputDeletedLineName();
-        sectionService.delete(name);
+    private void deleteSection() {
+        String lineName = inputView.inputDeletedSectionLineName();
+        String stationName = inputView.inputDeletedSectionStationName();
+        sectionService.delete(lineName, stationName);
         outputView.printMessage(InfoMessage.DELETE_LINE.getMessage());
     }
-
- */
 }

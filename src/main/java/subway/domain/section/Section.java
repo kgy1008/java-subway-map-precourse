@@ -24,13 +24,24 @@ public class Section {
     }
 
     void addStation(final Station station, final int sequence) {
-        validateStation(station);
+        validateAddStation(station);
         stations.add(station, sequence);
     }
 
-    private void validateStation(final Station station) {
+    void deleteStation(final Station station) {
+        validateDeleteStation(station);
+        stations.delete(station);
+    }
+
+    private void validateAddStation(final Station station) {
         if (stations.isContain(station)) {
             throw new IllegalArgumentException(ErrorMessage.CONFLICT_SECTION.getMessage());
+        }
+    }
+
+    private void validateDeleteStation(final Station station) {
+        if (!stations.isContain(station)) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_FOUND_STATION_IN_SECTION.getMessage());
         }
     }
 }

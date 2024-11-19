@@ -17,13 +17,13 @@ public class Stations {
     }
 
     void add(final Station station, final int sequence) {
-        try {
-            int index = sequence - 1;
-            validateIndex(index);
-            stations.add(index, station);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        int index = sequence - 1;
+        validateIndex(index);
+        stations.add(index, station);
+    }
+
+    void delete(final Station station) {
+        stations.remove(station);
     }
 
     private void validateIndex(int index) {
