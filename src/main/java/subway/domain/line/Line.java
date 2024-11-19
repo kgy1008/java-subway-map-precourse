@@ -6,7 +6,6 @@ public class Line {
 
     private static final int MIN_LENGTH = 2;
     private static final char LINE_LAST_NAME = '선';
-    private static final String HANGUL_REGEX = "^[가-힣]+$";
 
     private final String name;
 
@@ -26,7 +25,7 @@ public class Line {
     }
 
     private void validateFormat(final String name) {
-        if (name.matches(HANGUL_REGEX) && findLastName(name) == LINE_LAST_NAME) {
+        if (findLastName(name) == LINE_LAST_NAME) {
             return;
         }
         throw new IllegalArgumentException(ErrorMessage.INVALID_LINE_NAME_FORMAT.getMessage());
@@ -48,5 +47,4 @@ public class Line {
             throw new IllegalArgumentException(ErrorMessage.CONFLICT_LINE.getMessage());
         }
     }
-
 }
