@@ -16,6 +16,10 @@ public class StationRepository {
         stations.add(station);
     }
 
+    public static void addStations(final List<Station> inputStations) {
+        stations.addAll(inputStations);
+    }
+
     public static boolean deleteStation(final String name) {
         return stations.removeIf(station -> Objects.equals(station.getName(), name));
     }
