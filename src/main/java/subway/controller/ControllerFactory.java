@@ -26,6 +26,6 @@ public class ControllerFactory {
         if (response == MenuResponse.THREE) {
             return new SectionController(outputView, inputView, new SectionService());
         }
-        return null;
+        return new SubwayController(outputView, inputView);
     }
 }

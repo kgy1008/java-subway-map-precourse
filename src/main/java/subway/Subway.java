@@ -12,12 +12,10 @@ public class Subway {
 
     private final InputView inputView;
     private final OutputView outputView;
-    private SubwayController controller;
 
     public Subway(final InputView inputView, final OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
-        this.controller = new SubwayController(outputView, inputView);
     }
 
     public void run() {
@@ -27,7 +25,7 @@ public class Subway {
             if (menuResponse == MenuResponse.QUIT) {
                 break;
             }
-            controller = ControllerFactory.getController(menuResponse, inputView, outputView);
+            final SubwayController controller = ControllerFactory.getController(menuResponse, inputView, outputView);
             controller.run();
         }
     }
