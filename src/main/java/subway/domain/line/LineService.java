@@ -33,7 +33,7 @@ public class LineService {
     }
 
     private void checkCanDelete(final Line line) {
-        if (SectionRepository.isExistLine(line)) {
+        if (SectionRepository.isExistByLine(line)) {
             throw new IllegalArgumentException(ErrorMessage.UNAUTHORIZED_DELETE_LINE.getMessage());
         }
     }

@@ -26,8 +26,8 @@ public class SectionRepository {
                 .anyMatch(section -> section.isContainStation(station));
     }
 
-    public static boolean isExistLine(final Line line) {
+    public static boolean isExistByLine(final Line line) {
         return sections().stream()
-                .anyMatch(section -> section.isContainLine(line));
+                .anyMatch(section -> section.isEqualLine(line));
     }
 }
