@@ -33,6 +33,10 @@ public class Section {
         stations.delete(station);
     }
 
+    int getStationCount() {
+        return stations.getSize();
+    }
+
     private void validateAddStation(final Station station) {
         if (stations.isContain(station)) {
             throw new IllegalArgumentException(ErrorMessage.CONFLICT_SECTION.getMessage());

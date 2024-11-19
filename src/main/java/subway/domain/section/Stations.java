@@ -16,6 +16,10 @@ public class Stations {
         return stations.contains(station);
     }
 
+    int getSize() {
+        return stations.size();
+    }
+
     void add(final Station station, final int sequence) {
         int index = sequence - 1;
         validateIndex(index);
