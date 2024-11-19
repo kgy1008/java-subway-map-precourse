@@ -1,5 +1,6 @@
 package subway.domain.station;
 
+import subway.common.ErrorMessage;
 import subway.domain.section.SectionRepository;
 
 public class StationService {
@@ -17,7 +18,7 @@ public class StationService {
 
     private void checkCanDelete(final Station station) {
         if (SectionRepository.isExistStation(station)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.UNAUTHORIZED_DELETE.getMessage());
         }
     }
 }
