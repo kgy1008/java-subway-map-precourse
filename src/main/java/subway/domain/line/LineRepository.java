@@ -1,4 +1,4 @@
-package subway.domain;
+package subway.domain.line;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,5 +18,9 @@ public class LineRepository {
 
     public static boolean deleteLineByName(String name) {
         return lines.removeIf(line -> Objects.equals(line.getName(), name));
+    }
+
+    public static boolean existsByName(final String name) {
+        return lines.stream().anyMatch(line -> line.getName().equals(name));
     }
 }
