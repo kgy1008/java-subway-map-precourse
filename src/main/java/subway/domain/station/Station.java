@@ -21,7 +21,7 @@ public class Station {
 
     private void validate(final String name) {
         validateFormat(name);
-        validateName(name);
+        validateNameLength(name);
         validateDuplicate(name);
     }
 
@@ -36,8 +36,8 @@ public class Station {
         return name.charAt(name.length() - 1);
     }
 
-    private void validateName(final String name) {
-        if (name.length() >= MIN_LENGTH) {
+    private void validateNameLength(final String name) {
+        if (name.length() > MIN_LENGTH) {
             return;
         }
         throw new IllegalArgumentException(ErrorMessage.INVALID_STATION_NAME_LENGTH.getMessage());
