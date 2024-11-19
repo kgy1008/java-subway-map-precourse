@@ -1,5 +1,6 @@
 package subway.view;
 
+import static subway.view.MenuTemplate.LINE_MENU;
 import static subway.view.MenuTemplate.MAIN_MENU;
 import static subway.view.MenuTemplate.STATION_MENU;
 
@@ -17,6 +18,10 @@ public class OutputView {
 
     public void printStationMenu() {
         System.out.println(STATION_MENU);
+    }
+
+    public void printLineMenu() {
+        System.out.println(LINE_MENU);
     }
 
     public void printMessage(final String message) {

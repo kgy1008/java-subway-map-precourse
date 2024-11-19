@@ -33,7 +33,7 @@ public class StationController {
     }
 
     private ManageResponse getUserInput() {
-        return RetryTemplate.retryTemplate(inputView::inputStationManageFeature);
+        return RetryTemplate.retryTemplate(inputView::inputManageFeature);
     }
 
     private void execute(ManageResponse response) {
