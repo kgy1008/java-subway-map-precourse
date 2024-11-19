@@ -1,6 +1,7 @@
 package subway.config;
 
 import java.util.List;
+import java.util.Set;
 import subway.domain.line.Line;
 import subway.domain.line.LineRepository;
 import subway.domain.section.Section;
@@ -24,7 +25,7 @@ public class Initializer {
             new Line("3호선"),
             new Line("신분당선")
     );
-    private static final List<Section> INITIAL_SECTION = List.of(
+    private static final Set<Section> INITIAL_SECTION = Set.of(
             new Section(new Line("2호선"), List.of(new Station("교대역"), new Station("강남역"), new Station("역삼역"))),
             new Section(new Line("3호선"),
                     List.of(new Station("교대역"), new Station("남부터미널역"), new Station("양재역"), new Station("매봉역"))),
