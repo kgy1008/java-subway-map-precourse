@@ -12,11 +12,18 @@ public class LineService {
     void add(final String name, final String startStationName, final String endStationName) {
         Line line = new Line(name);
         LineRepository.addLine(line);
-        Station startStation = StationRepository.findByName(startStationName);
-        Station endStation = StationRepository.findByName(endStationName);
-        List<Station> stations = List.of(startStation, endStation);
-        Section section = new Section(line, stations);
+        addSection(line, startStationName, endStationName);
+    }
+
+    private void addSection(final Line line, final String startStationName, final String endStationName) {
+        Station startStation = findStationByName(startStationName);
+        Station endStation = findStationByName(endStationName);
+        Section section = new Section(line, List.of(startStation, endStation));
         SectionRepository.addSection(section);
+    }
+
+    private Station findStationByName(final String name) {
+        return StationRepository.findByName(name);
     }
 
     void delete(final String name) {
