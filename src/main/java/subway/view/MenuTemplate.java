@@ -15,4 +15,10 @@ public class MenuTemplate {
             + "2. 역 삭제" + NEW_LINE
             + "3. 역 조회" + NEW_LINE
             + "B. 돌아가기" + NEW_LINE;
+
+    static final String LINE_MENU = "## 노선 관리 화면" + NEW_LINE
+            + "1. 노선 등록" + NEW_LINE
+            + "2. 노선 삭제" + NEW_LINE
+            + "3. 노선 조회" + NEW_LINE
+            + "B. 돌아가기" + NEW_LINE;
 }
