@@ -19,7 +19,7 @@ public class StationService {
 
     private void checkCanDelete(final Station station) {
         if (SectionRepository.isExistStation(station)) {
-            throw new IllegalArgumentException(ErrorMessage.UNAUTHORIZED_DELETE.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.UNAUTHORIZED_DELETE_STATION.getMessage());
         }
     }
 
