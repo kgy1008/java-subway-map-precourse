@@ -12,21 +12,19 @@ public class Subway {
 
     private final InputView inputView;
     private final OutputView outputView;
-    private boolean isRunning;
+    private SubwayController controller;
 
     public Subway(final InputView inputView, final OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
-        isRunning = true;
+        this.controller = new SubwayController(outputView, inputView);
     }
 
     public void run() {
-        SubwayController controller;
         init();
-        while (isRunning) {
+        while (true) {
             MenuResponse menuResponse = displayMainMenuAndGetResponse();
             if (menuResponse == MenuResponse.QUIT) {
-                isRunning = false;
                 break;
             }
             controller = ControllerFactory.getController(menuResponse);

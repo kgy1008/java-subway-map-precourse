@@ -7,9 +7,9 @@ public class SubwayController {
     protected final OutputView outputView;
     protected final InputView inputView;
 
-    public SubwayController() {
-        this.outputView = new OutputView();
-        this.inputView = new InputView();
+    public SubwayController(final OutputView outputView, final InputView inputView) {
+        this.outputView = outputView;
+        this.inputView = inputView;
     }
 
     public void run() {
