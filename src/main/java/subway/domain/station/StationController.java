@@ -38,11 +38,20 @@ public class StationController {
         if (response == ManageResponse.ONE) {
             enrollStation();
         }
+        if (response == ManageResponse.TWO) {
+            deleteStation();
+        }
     }
 
     private void enrollStation() {
         String name = inputView.inputStationName();
         stationService.add(name);
         outputView.printMessage(InfoMessage.CREATE_STATION.getMessage());
+    }
+
+    private void deleteStation() {
+        String name = inputView.inputDeletedStationName();
+        stationService.delete(name);
+        outputView.printMessage(InfoMessage.DELETE_STATION.getMessage());
     }
 }

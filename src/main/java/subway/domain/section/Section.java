@@ -13,4 +13,8 @@ public class Section {
         this.line = line;
         this.stations = new Stations(stations);
     }
+
+    boolean isContainStation(final Station station) {
+        return stations.isContain(station);
+    }
 }

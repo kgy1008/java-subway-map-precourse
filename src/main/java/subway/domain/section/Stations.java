@@ -10,4 +10,8 @@ public class Stations {
     public Stations(final List<Station> stations) {
         this.stations = stations;
     }
+
+    boolean isContain(final Station station) {
+        return stations.contains(station);
+    }
 }
