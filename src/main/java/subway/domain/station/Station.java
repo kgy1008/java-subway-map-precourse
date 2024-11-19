@@ -5,7 +5,7 @@ import subway.common.ErrorMessage;
 public class Station {
 
     private static final int MIN_LENGTH = 2;
-    public static final char STATION_LAST_NAME = '역';
+    private static final char STATION_LAST_NAME = '역';
     private static final String HANGUL_REGEX = "^[가-힣]+$";
 
     private final String name;
