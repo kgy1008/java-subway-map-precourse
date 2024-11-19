@@ -1,5 +1,6 @@
 package subway.domain.station;
 
+import java.util.List;
 import subway.common.ErrorMessage;
 import subway.domain.section.SectionRepository;
 
@@ -20,5 +21,9 @@ public class StationService {
         if (SectionRepository.isExistStation(station)) {
             throw new IllegalArgumentException(ErrorMessage.UNAUTHORIZED_DELETE.getMessage());
         }
+    }
+
+    List<Station> findAll() {
+        return StationRepository.stations();
     }
 }
