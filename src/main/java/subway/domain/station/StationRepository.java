@@ -1,4 +1,4 @@
-package subway.domain;
+package subway.domain.station;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,11 +12,15 @@ public class StationRepository {
         return Collections.unmodifiableList(stations);
     }
 
-    public static void addStation(Station station) {
+    public static void addStation(final Station station) {
         stations.add(station);
     }
 
-    public static boolean deleteStation(String name) {
+    public static boolean deleteStation(final String name) {
         return stations.removeIf(station -> Objects.equals(station.getName(), name));
+    }
+
+    public static boolean existsByname(final String name) {
+        return stations.stream().anyMatch(station -> station.getName().equals(name));
     }
 }
