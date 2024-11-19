@@ -6,12 +6,16 @@ import subway.controller.SubwayController;
 import subway.domain.response.ManageResponse;
 import subway.dto.LineInfo;
 import subway.util.RetryTemplate;
+import subway.view.InputView;
+import subway.view.OutputView;
 
 public class LineController extends SubwayController {
 
     private final LineService lineService;
 
-    public LineController(final LineService lineService) {
+    public LineController(final OutputView outputView, final InputView inputView,
+                          final LineService lineService) {
+        super(outputView, inputView);
         this.lineService = lineService;
     }
 

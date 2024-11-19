@@ -27,7 +27,7 @@ public class Subway {
             if (menuResponse == MenuResponse.QUIT) {
                 break;
             }
-            controller = ControllerFactory.getController(menuResponse);
+            controller = ControllerFactory.getController(menuResponse, inputView, outputView);
             controller.run();
         }
     }

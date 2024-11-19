@@ -6,12 +6,16 @@ import subway.controller.SubwayController;
 import subway.domain.response.ManageResponse;
 import subway.dto.StationInfo;
 import subway.util.RetryTemplate;
+import subway.view.InputView;
+import subway.view.OutputView;
 
 public class StationController extends SubwayController {
 
     private final StationService stationService;
 
-    public StationController(final StationService stationService) {
+    public StationController(final OutputView outputView, final InputView inputView,
+                             final StationService stationService) {
+        super(outputView, inputView);
         this.stationService = stationService;
     }
 

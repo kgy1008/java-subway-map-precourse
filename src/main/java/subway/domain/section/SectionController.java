@@ -5,12 +5,16 @@ import subway.common.InfoMessage;
 import subway.controller.SubwayController;
 import subway.domain.response.ManageResponse;
 import subway.util.RetryTemplate;
+import subway.view.InputView;
+import subway.view.OutputView;
 
 public class SectionController extends SubwayController {
 
     private final SectionService sectionService;
 
-    public SectionController(final SectionService sectionService) {
+    public SectionController(final OutputView outputView, final InputView inputView,
+                             final SectionService sectionService) {
+        super(outputView, inputView);
         this.sectionService = sectionService;
     }
 
